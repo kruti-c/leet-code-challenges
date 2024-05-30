@@ -68,8 +68,8 @@ const treeSum_bfs = (root) =>{
 
 const tree_min_value_recursive = (root) => {
 
-    if(root === null) return -1; //not found
-    if(root.left === null && root.right === null) return root.val;
+    if(root === null) return Infinity
+    
     return Math.min(root.val,tree_min_value_recursive(root.left), tree_min_value_recursive(root.right));
 
 }
