@@ -38,10 +38,39 @@ const treeIncludes_dfs_recursive = (root, target) => {
 }
 
 
-const treeSum = (root) =>{
+const treeSum_dfs_recursive = (root) =>{
     if(root === null) return 0;
     const sum = root.val + treeSum(root.left) + treeSum(root.right);
     return sum;
+
+}
+
+const treeSum_bfs = (root) =>{
+
+    if(root === null) return 0;
+
+   const queue = [ root ];
+   var sum = 0;
+
+   while(queue.length > 0){
+    
+    var current = queue.shift();
+    sum += current.val;
+
+    if(current.left) queue.push(current.left);
+    if(current.right) queue.push(current.right);
+   }
+
+   return sum;
+
+}
+
+
+const tree_min_value_recursive = (root) => {
+
+    if(root === null) return -1; //not found
+    if(root.left === null && root.right === null) return root.val;
+    return Math.min(root.val,tree_min_value_recursive(root.left), tree_min_value_recursive(root.right));
 
 }
 
@@ -68,5 +97,5 @@ c.right = f;
 // const test3 = treeIncludes_dfs_recursive(a, "z"); // should be false
 // console.log(test3); // false
 
-const test4 = treeSum(a); // should be false
+const test4 = tree_min_value_recursive(a); // should be false
 console.log(test4); //
