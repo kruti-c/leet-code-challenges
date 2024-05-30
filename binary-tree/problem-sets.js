@@ -74,6 +74,14 @@ const tree_min_value_recursive = (root) => {
 
 }
 
+
+const max_root_to_leaf_to_path_sum = (root) =>{
+    if(root === null) return - Infinity;
+    if(root.left===null && root.right=== null) return root.val;
+    return root.val + Math.max( max_root_to_leaf_to_path_sum(root.left), max_root_to_leaf_to_path_sum(root.right));
+
+}
+
 const a = new Node(3);
 const b = new Node(11);
 const c = new Node(4);
